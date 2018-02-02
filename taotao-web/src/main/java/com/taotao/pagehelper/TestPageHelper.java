@@ -7,6 +7,7 @@ import com.taotao.pojo.TbItem;
 import com.taotao.pojo.TbItemExample;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -15,12 +16,13 @@ import java.util.List;
  */
 public class TestPageHelper {
 
-    public void testPageHelper() throws Exception{
+    @Test
+    public void testPageHelper() throws Exception {
         // 1.获取mapper代理对象
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
         TbItemMapper itemMapper = applicationContext.getBean(TbItemMapper.class);
         // 2.设置分页
-        PageHelper.startPage(1,30);
+        PageHelper.startPage(4, 30);
         // 3.执行查询
         TbItemExample example = new TbItemExample();
         List<TbItem> tbItems = itemMapper.selectByExample(example);
@@ -29,7 +31,9 @@ public class TestPageHelper {
         PageInfo<TbItem> pageInfo = new PageInfo<>(tbItems);
 
         long total = pageInfo.getTotal();
-        System.out.println();
-
+        System.out.println("total:" + total);
+        System.out.println("pages:" + pageInfo.getPages());
+        System.out.println("pageSize:" + pageInfo.getPageSize());
+        System.out.println(pageInfo);
     }
 }

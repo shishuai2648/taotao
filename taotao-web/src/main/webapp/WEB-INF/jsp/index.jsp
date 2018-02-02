@@ -17,9 +17,9 @@
          	<li>
          		<span>商品管理</span>
          		<ul>
-	         		<li data-options="attributes:{'url':'/rest/page/item-add'}">新增商品</li>
-	         		<li data-options="attributes:{'url':'/rest/page/item-list'}">查询商品</li>
-	         		<li data-options="attributes:{'url':'/rest/page/item-param-list'}">规格参数</li>
+	         		<li data-options="attributes:{'url':'item-add'}">新增商品</li>
+	         		<li data-options="attributes:{'url':'item-list'}">查询商品</li>
+	         		<li data-options="attributes:{'url':'item-param-list'}">规格参数</li>
 	         	</ul>
          	</li>
          	<li>
