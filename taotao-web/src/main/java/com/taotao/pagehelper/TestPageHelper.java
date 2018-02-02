@@ -30,7 +30,6 @@ public class TestPageHelper {
 
         long total = pageInfo.getTotal();
         System.out.println();
-        pageInfo.get
 
     }
 }
