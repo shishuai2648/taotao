@@ -16,7 +16,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/rest/item/cat")
 public class ItemCatController {
-
     @Autowired
     private ItemCatService itemCatService;
     @RequestMapping("/list")
@@ -24,5 +23,4 @@ public class ItemCatController {
     private List<EasyUITreeNode> getItemCatList(@RequestParam(value = "id",defaultValue = "0") Long parentId){
         return itemCatService.getItemCatList(parentId);
     }
-
 }
