@@ -22,8 +22,8 @@ Date.prototype.format = function(format){
 var TT = TAOTAO = {
 	// 编辑器参数
 	kingEditorParams : {
-		filePostName  : "uploadFile",
-		uploadJson : '/rest/pic/upload',
+		filePostName  : "uploadFile",// Controller中接收参数使用的参数名
+		uploadJson : '/rest/pic/upload',// 请求的url地址
 		dir : "image"
 	},
 	// 格式化时间
