@@ -9,16 +9,16 @@
 	            <td>商品类目:</td>
 	            <td>
 	            	<a href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a>
-	            	<input type="hidden" name="cid" style="width: 280px;"></input>
+	            	<input type="hidden" name="cid" style="width: 280px;" />
 	            </td>
 	        </tr>
 	        <tr>
 	            <td>商品标题:</td>
-	            <td><input class="easyui-textbox" type="text" name="title" data-options="required:true" style="width: 280px;"></input></td>
+	            <td><input class="easyui-textbox" type="text" name="title" data-options="required:true" style="width: 280px;" /></td>
 	        </tr>
 	        <tr>
 	            <td>商品卖点:</td>
-	            <td><input class="easyui-textbox" name="sellPoint" data-options="multiline:true,validType:'length[0,150]'" style="height:60px;width: 280px;"></input></td>
+	            <td><input class="easyui-textbox" name="sellPoint" data-options="multiline:true,validType:'length[0,150]'" style="height:60px;width: 280px;"/></td>
 	        </tr>
 	        <tr>
 	            <td>商品价格:</td>
@@ -66,8 +66,11 @@
 <script type="text/javascript">
 	var itemAddEditor ;
 	$(function(){
+		// 创建富文本编辑器
 		itemAddEditor = TAOTAO.createEditor("#itemAddForm [name=desc]");
+		// 初始化类目选择和图片上传
 		TAOTAO.init({fun:function(node){
+			// 根据商品的分类id去商品的规格模板
 			TAOTAO.changeItemParam(node, "itemAddForm");
 		}});
 	});
