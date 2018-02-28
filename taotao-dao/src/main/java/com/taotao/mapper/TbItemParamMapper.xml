@@ -6,6 +6,7 @@
     <result column="item_cat_id" property="itemCatId" jdbcType="BIGINT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="name" property="itemCatName" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.taotao.pojo.TbItemParam" extends="BaseResultMap" >
     <result column="param_data" property="paramData" jdbcType="LONGVARCHAR" />
@@ -90,6 +91,13 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectItemParam" resultMap="ResultMapWithBLOBs">
+    SELECT a.id,a.item_cat_id,b.name,a.created,a.updated,a.param_data
+      FROM tb_item_param a,tb_item_cat b
+     WHERE a.item_cat_id = b.id
+  </select>
+
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.taotao.pojo.TbItemParamExample" >
     select
     <if test="distinct" >
@@ -248,4 +256,10 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectByCatId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long">
+    select
+    id, item_cat_id, created, updated
+    from tb_item_param
+    where item_cat_id = #{itemCatId,jdbcType=BIGINT}
+  </select>
 </mapper>

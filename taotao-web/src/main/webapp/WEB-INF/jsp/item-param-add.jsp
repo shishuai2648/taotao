@@ -4,7 +4,7 @@
 	<tr>
 		<td>商品类目:</td>
 		<td><a href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a> 
-			<input type="hidden" name="cid" style="width: 280px;"></input>
+			<input type="hidden" name="cid" style="width: 280px;" />
 		</td>
 	</tr>
 	<tr class="hide addGroupTr">
@@ -55,7 +55,7 @@
 				   type: "GET",
 				   url: "/rest/item/param/" + node.id,
 				   success: function(data){
-					   if(data){
+					   if(data.status == 200 && data.data){
 						  $.messager.alert("提示", "该类目已经添加，请选择其他类目。", undefined, function(){
 							 $("#itemParamAddTable .selectItemCat").click();
 						  });
@@ -111,10 +111,17 @@
 			});
 			var url = "/rest/item/param/"+$("#itemParamAddTable [name=cid]").val();
 			$.post(url,{"paramData":JSON.stringify(params)},function(data){
-				$.messager.alert('提示','新增商品规格成功!',undefined,function(){
-					$(".panel-tool-close").click();
-   					$("#itemParamList").datagrid("reload");
-   				});
+				if(data.status == 200) {
+					$.messager.alert('提示', '新增商品规格成功!', undefined, function () {
+						$(".panel-tool-close").click();
+						$("#itemParamList").datagrid("reload");
+					});
+				}else{
+					$.messager.alert('提示', '新增商品规格失败!', undefined, function () {
+						$(".panel-tool-close").click();
+						$("#itemParamList").datagrid("reload");
+					});
+				}
 			});
 		});
 	});
