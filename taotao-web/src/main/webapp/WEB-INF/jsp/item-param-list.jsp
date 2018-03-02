@@ -49,7 +49,18 @@
         text:'编辑',
         iconCls:'icon-edit',
         handler:function(){
-        	$.messager.alert('提示','该功能未实现!');
+			var ids = getSelectionsIds();
+			if(ids.lenth != 1){
+				$.messager.alert('提示','请只选择一个商品！');
+				return;
+			}
+//        	$.messager.alert('提示','该功能未实现!');
+			$.post("/item-param-edit",{"id":id},function (data) {
+				TAOTAO.createWindow({
+					url : "/item-param-add",
+				});
+			})
+
         }
     },{
         text:'删除',

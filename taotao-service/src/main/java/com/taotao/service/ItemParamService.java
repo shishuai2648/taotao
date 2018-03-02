@@ -19,9 +19,23 @@ public interface ItemParamService {
 
     /**
      * 根据商品类目id查询商品类目信息
+     * @param catId             商品对应的商品类目ID
+     * @return
      */
-    TaotaoResult getItemParamById(Long id);
+    TaotaoResult getItemParamById(Long catId);
 
-    TaotaoResult saveItemParam(Long id, String paramData);
+    /**
+     * 保存ItemParam数据信息
+     * @param catId             商品对应的商品类目ID
+     * @param paramData         商品的规格参数模板
+     * @return
+     */
+    TaotaoResult saveItemParam(Long catId, String paramData);
 
+    /**
+     * 删除ItemParam
+     * @param ids               商品类目ID集合
+     * @return
+     */
+    TaotaoResult deleteItemParam(Long[] ids);
 }

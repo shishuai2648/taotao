@@ -12,6 +12,9 @@ import com.taotao.pojo.TbItemParamExample;
 import com.taotao.service.ItemParamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -67,5 +70,19 @@ public class ItemParamServiceImpl implements ItemParamService {
             return TaotaoResult.ok();
         }
         return TaotaoResult.build(500,"添加失败");
+    }
+
+    @Override
+    public TaotaoResult deleteItemParam(Long[] ids) {
+        // 逆向工程查询条件对象
+        TbItemParamExample itemParamExample = new TbItemParamExample();
+        // 条件对象
+        TbItemParamExample.Criteria criteria = itemParamExample.createCriteria();
+        // 添加对应条件
+        criteria.andIdIn(Arrays.asList(ids));
+        // 执行删除
+        int total = itemParamMapper.deleteByExample(itemParamExample);
+        // 返回对应信息
+        return TaotaoResult.ok(total);
     }
 }

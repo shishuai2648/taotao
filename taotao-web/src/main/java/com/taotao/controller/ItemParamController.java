@@ -10,6 +10,7 @@ import com.taotao.service.impl.ItemParamServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,12 +33,16 @@ public class ItemParamController {
     @RequestMapping("/rest/item/param/{id}")
     @ResponseBody
     public TaotaoResult addItemParamList(@PathVariable Long id, String paramData){
-        System.out.println(paramData);
         if(paramData == null || paramData.isEmpty()) {
             return itemParamService.getItemParamById(id);
-        }
-        else{
+        }else{
             return itemParamService.saveItemParam(id,paramData);
         }
+    }
+
+    @RequestMapping("/rest/item/param/delete")
+    @ResponseBody
+    public TaotaoResult removeItemParam(Long[] ids){
+        return itemParamService.deleteItemParam(ids);
     }
 }
