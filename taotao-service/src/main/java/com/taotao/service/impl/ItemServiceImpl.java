@@ -5,17 +5,18 @@ import com.github.pagehelper.PageInfo;
 import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.utils.IDUtils;
+import com.taotao.common.utils.JsonUtils;
 import com.taotao.mapper.TbItemDescMapper;
 import com.taotao.mapper.TbItemMapper;
-import com.taotao.pojo.TbItem;
-import com.taotao.pojo.TbItemDesc;
-import com.taotao.pojo.TbItemExample;
+import com.taotao.mapper.TbItemParamItemMapper;
+import com.taotao.pojo.*;
 import com.taotao.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 商品查询Service
@@ -27,6 +28,9 @@ public class ItemServiceImpl implements ItemService {
     private TbItemMapper itemMapper;
     @Autowired
     private TbItemDescMapper itemDescMapper;
+    @Autowired
+    private TbItemParamItemMapper itemParamItemMapper;
+
     @Override
     public TbItem getItemById(Long itemId) {
         return itemMapper.selectByPrimaryKey(itemId);
@@ -48,7 +52,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public TaotaoResult createItem(TbItem item, String desc) {
+    public TaotaoResult createItem(TbItem item, String desc,String itemParams) {
         // 生成商品ID
         long itemId = IDUtils.genItemId();
         // 不全TbItem属性
@@ -70,6 +74,40 @@ public class ItemServiceImpl implements ItemService {
         itemDesc.setCreated(date);
         // 插入商品描述信息
         itemDescMapper.insert(itemDesc);
+
+        TbItemParamItem itemParamItem = new TbItemParamItem();
+        itemParamItem.setCreated(date);
+        itemParamItem.setUpdated(date);
+        itemParamItem.setParamData(itemParams);
+        itemParamItem.setItemId(itemId);
+        itemParamItemMapper.insert(itemParamItem);
+
         return TaotaoResult.ok();
+    }
+
+    /**
+     * 根据商品id查询规格参数
+     * @param itemId        商品ID
+     * @return
+     */
+    @Override
+    public String getItemParamHtml(Long itemId) {
+        TbItemParamItemExample itemParamExample = new TbItemParamItemExample();
+        TbItemParamItemExample.Criteria criteria = itemParamExample.createCriteria();
+        criteria.andItemIdEqualTo(itemId);
+        List<TbItemParamItem> itemParamItems = itemParamItemMapper.selectByExample(itemParamExample);
+
+        if(itemParamItems == null || itemParamItems.isEmpty()){
+            return "";
+        }
+        // 获取规格参数
+        TbItemParamItem itemParamItem = itemParamItems.get(0);
+        // 获取json数据
+        String paramData = itemParamItem.getParamData();
+        // 转换成java对象
+        List<Map> mapList = JsonUtils.jsonToList(paramData, Map.class);
+        // 遍历list,生成html
+
+        return null;
     }
 }
