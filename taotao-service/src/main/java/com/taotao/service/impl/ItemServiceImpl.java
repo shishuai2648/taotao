@@ -35,10 +35,11 @@ public class ItemServiceImpl implements ItemService {
     public TbItem getItemById(Long itemId) {
         return itemMapper.selectByPrimaryKey(itemId);
     }
+
     @Override
     public EasyUIDataGridResult getItemList(int page, int rows) {
         // 分页处理
-        PageHelper.startPage(page,rows);
+        PageHelper.startPage(page, rows);
         // 执行查询
         TbItemExample example = new TbItemExample();
         List<TbItem> itemList = itemMapper.selectByExample(example);
@@ -52,7 +53,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public TaotaoResult createItem(TbItem item, String desc,String itemParams) {
+    public TaotaoResult createItem(TbItem item, String desc, String itemParams) {
         // 生成商品ID
         long itemId = IDUtils.genItemId();
         // 不全TbItem属性
@@ -87,7 +88,8 @@ public class ItemServiceImpl implements ItemService {
 
     /**
      * 根据商品id查询规格参数
-     * @param itemId        商品ID
+     *
+     * @param itemId 商品ID
      * @return
      */
     @Override
@@ -95,9 +97,9 @@ public class ItemServiceImpl implements ItemService {
         TbItemParamItemExample itemParamExample = new TbItemParamItemExample();
         TbItemParamItemExample.Criteria criteria = itemParamExample.createCriteria();
         criteria.andItemIdEqualTo(itemId);
-        List<TbItemParamItem> itemParamItems = itemParamItemMapper.selectByExample(itemParamExample);
+        List<TbItemParamItem> itemParamItems = itemParamItemMapper.selectByExampleWithBLOBs(itemParamExample);
 
-        if(itemParamItems == null || itemParamItems.isEmpty()){
+        if (itemParamItems == null || itemParamItems.isEmpty()) {
             return "";
         }
         // 获取规格参数
@@ -107,7 +109,19 @@ public class ItemServiceImpl implements ItemService {
         // 转换成java对象
         List<Map> mapList = JsonUtils.jsonToList(paramData, Map.class);
         // 遍历list,生成html
+        StringBuffer html = new StringBuffer();
+        html.append("<div class=\"Ptable-item\">");
+        for (Map map : mapList) {
+            html.append("  <h3>"+map.get("group").toString()+"</h3>");
+            List<Map> mapList2 = (List<Map>) map.get("params");
+            for (Map map2 : mapList2) {
+                html.append("  <dl>");
+                html.append("    <dt>" + map2.get("k")+"\t"+map2.get("v")+"</dt>");
+                html.append("  </dl>");
+            }
+            html.append("</div>");
 
-        return null;
+        }
+        return html.toString();
     }
 }
