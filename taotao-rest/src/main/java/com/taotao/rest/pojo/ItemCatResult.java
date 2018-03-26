@@ -10,13 +10,14 @@ import java.util.List;
  **/
 public class ItemCatResult {
 
-    private List date;
+    private List data;
 
-    public List getDate() {
-        return date;
+
+    public List getData() {
+        return data;
     }
 
-    public void setDate(List date) {
-        this.date = date;
+    public void setData(List data) {
+        this.data = data;
     }
 }
