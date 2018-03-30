@@ -3,6 +3,8 @@ package com.taotao.service;/**
  */
 
 import com.taotao.common.pojo.EasyUIDataGridResult;
+import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.pojo.TbContent;
 
 /**
  * @author lenovo
@@ -11,4 +13,6 @@ import com.taotao.common.pojo.EasyUIDataGridResult;
 public interface ContentService {
 
     EasyUIDataGridResult selectCatgroryDet(int page, int rows, Long catgoryId);
+
+    TaotaoResult saveContent(TbContent content);
 }

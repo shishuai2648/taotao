@@ -13,6 +13,7 @@ import com.taotao.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,5 +44,13 @@ public class ContentServiceImpl implements ContentService {
         result.setRows(tbContents);
 
         return result;
+    }
+
+    @Override
+    public TaotaoResult saveContent(TbContent content) {
+        content.setUpdated(new Date());
+        content.setCreated(new Date());
+        contentMapper.insertSelective(content);
+        return TaotaoResult.ok();
     }
 }

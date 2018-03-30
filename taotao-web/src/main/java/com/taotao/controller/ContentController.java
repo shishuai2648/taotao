@@ -4,6 +4,7 @@ package com.taotao.controller;/**
 
 import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.pojo.TbContent;
 import com.taotao.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,8 +28,10 @@ public class ContentController {
         return contentService.selectCatgroryDet(page, rows, categoryId);
     }
 
-//    @RequestMapping("/save")
-//    @ResponseBody
-//
+    @RequestMapping("/save")
+    @ResponseBody
+    public TaotaoResult saveContent(TbContent content){
+        return contentService.saveContent(content);
+    }
 
 }
