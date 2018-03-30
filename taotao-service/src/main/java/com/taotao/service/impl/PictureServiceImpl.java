@@ -31,7 +31,6 @@ public class PictureServiceImpl implements PictureService {
 
         // 上传到图片服务器
         try {
-
             // 取图片的扩展名
             String originalFilename = picFile.getOriginalFilename();
             String ext = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);

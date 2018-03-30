@@ -77,7 +77,7 @@
 				//提交到后台的RESTful
 				$.ajax({
 				   type: "POST",
-				   url: "/rest/content",
+				   url: "/content/save",
 				   data: $("#contentAddForm").serialize(),
 				   success: function(msg){
 					   $.messager.alert('提示','新增内容成功!');
