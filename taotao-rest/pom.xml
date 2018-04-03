@@ -19,6 +19,11 @@
             <artifactId>taotao-dao</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--Jedis-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
         <!-- 添加spring的依赖jar包 -->
         <!-- Spring -->
         <dependency>
@@ -55,6 +60,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jsp-api</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

@@ -8,6 +8,7 @@
 <modules>
     <module>../taotao-common</module>
     <module>../taotao-manager</module>
+    <module>../taotao-portal</module>
 </modules>
 <!-- 集中定义依赖版本号 -->
 <properties>
@@ -31,7 +32,7 @@
     <pagehelper.version>4.1.6</pagehelper.version>
     <jsqlparser.version>0.9.6</jsqlparser.version>
     <commons-fileupload.version>1.3.1</commons-fileupload.version>
-    <jedis.version>2.7.2</jedis.version>
+    <jedis.version>2.9.0</jedis.version>
     <solrj.version>4.10.3</solrj.version>
     <freemarker.version>2.3.23</freemarker.version>
     <quartz.version>2.2.2</quartz.version>

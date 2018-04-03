@@ -3,12 +3,21 @@ package com.taotao.httpclient;/**
  */
 
 import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * @author lenovo
@@ -35,5 +44,29 @@ public class HttpClientTest {
         // 第九步：关闭HttpGet、HttpClient
         response.close();
         httpClient.close();
+    }
+
+    @Test
+    public void testHttpPost() throws Exception{
+        //第一步：创建一个httpClient对象
+        CloseableHttpClient client = HttpClients.createDefault();
+        //第二步：创建一个HttpPost对象。需要指定一个URL
+        HttpPost post = new HttpPost("http://localhost:8082/posttest.html");
+        //第三步：创建一个list模拟表单，list中每个元素都是一个NameValuePair对象
+        List<NameValuePair> formList = new ArrayList<>();
+        formList.add(new BasicNameValuePair("name","张三"));
+        formList.add(new BasicNameValuePair("pass","123"));
+        //第四步：需要把表单包装到Entity对象中。StringEntity
+        StringEntity entity = new UrlEncodedFormEntity(formList,"UTF-8");
+        post.setEntity(entity);
+        //第五步：执行请求。
+        CloseableHttpResponse response = client.execute(post);
+        //第六步：接受返回结果
+        HttpEntity httpEntity = response.getEntity();
+        String result = EntityUtils.toString(httpEntity);
+        System.out.println(result);
+        //第七步：关闭流
+        response.close();
+        client.close();
     }
 }

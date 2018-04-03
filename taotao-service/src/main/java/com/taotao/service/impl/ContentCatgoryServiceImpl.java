@@ -2,13 +2,11 @@ package com.taotao.service.impl;/**
  * Created by lenovo on 2018/3/29.
  */
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import com.taotao.common.pojo.EasyUITreeNode;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.mapper.TbContentCategoryMapper;
 import com.taotao.pojo.TbContentCategory;
 import com.taotao.pojo.TbContentCategoryExample;
-import com.taotao.pojo.TbContentExample;
 import com.taotao.service.ContentCatgoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
