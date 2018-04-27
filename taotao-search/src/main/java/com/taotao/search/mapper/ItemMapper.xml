@@ -5,11 +5,11 @@
 		SELECT
 			a.id,
 			a.title,
-			a.sell_point,
+			a.sell_point AS sellPoint,
 			a.price,
 			a.image,
-			b.`name` category_name,
-			c.item_desc
+			b.name AS categoryName,
+			c.item_desc AS itemDesc
 		FROM
 			tb_item a
 		LEFT JOIN tb_item_cat b ON a.cid = b.id
