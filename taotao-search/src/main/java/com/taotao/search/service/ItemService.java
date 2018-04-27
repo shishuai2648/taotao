@@ -8,4 +8,5 @@ import java.io.IOException;
 public interface ItemService {
 
     TaotaoResult importItems() throws Exception;
+
 }
