@@ -1,4 +1,4 @@
-package com.taotao.search.pojo;
+package com.taotao.common.pojo;
 
 /**
  * 用来封装查询数据

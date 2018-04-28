@@ -2,7 +2,7 @@ package com.taotao.search.service;/**
  * Created by lenovo on 2018/4/27.
  */
 
-import com.taotao.search.pojo.SearchResult;
+import com.taotao.common.pojo.SearchResult;
 import org.apache.solr.client.solrj.SolrServerException;
 
 /**

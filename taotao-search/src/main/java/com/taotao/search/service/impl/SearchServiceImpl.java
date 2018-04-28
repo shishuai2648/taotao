@@ -3,7 +3,7 @@ package com.taotao.search.service.impl;/**
  */
 
 import com.taotao.search.dao.SearchDao;
-import com.taotao.search.pojo.SearchResult;
+import com.taotao.common.pojo.SearchResult;
 import com.taotao.search.service.SearchService;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
