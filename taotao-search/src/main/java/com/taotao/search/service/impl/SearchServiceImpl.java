@@ -22,7 +22,7 @@ public class SearchServiceImpl implements SearchService {
     private SearchDao searchDao;
 
     @Override
-    public SearchResult search(String queryString, int page, int rows) throws SolrServerException {
+    public SearchResult search(String queryString, int page, int rows) throws Exception {
         // 创建查询条件
         SolrQuery query = new SolrQuery();
         // 设置查询条件

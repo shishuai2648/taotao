@@ -5,6 +5,7 @@ package com.taotao.search.controller;/**
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.utils.ExceptionUtil;
 import com.taotao.common.pojo.SearchResult;
+import com.taotao.search.service.ItemService;
 import com.taotao.search.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class SearchController {
 
     @Autowired
     private SearchService searchService;
+    @Autowired
+    private ItemService itemService;
 
     @RequestMapping("/q")
     @ResponseBody
@@ -36,6 +39,30 @@ public class SearchController {
         } catch (Exception e) {
             e.printStackTrace();
             return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
+        }
+    }
+
+    @RequestMapping("/addOrUpdate")
+    @ResponseBody
+    public TaotaoResult addOrUpdate(Long id){
+        try {
+            itemService.addOrUpdateItem(id);
+            return TaotaoResult.ok();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return TaotaoResult.build(500,ExceptionUtil.getStackTrace(e));
+        }
+    }
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public TaotaoResult delete(Long id){
+        try {
+            itemService.delete(id);
+            return TaotaoResult.ok();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return TaotaoResult.build(500,ExceptionUtil.getStackTrace(e));
         }
     }
 }

@@ -4,8 +4,7 @@ import com.taotao.search.dao.SearchDao;
 import com.taotao.common.pojo.SearchItem;
 import com.taotao.common.pojo.SearchResult;
 import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrServer;
-import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
@@ -23,10 +22,10 @@ import java.util.Map;
 public class SearchDaoImpl implements SearchDao {
 
     @Autowired
-    private SolrServer solrServer;
+    private HttpSolrClient solrServer;
 
     @Override
-    public SearchResult search(SolrQuery solrQuery) throws SolrServerException {
+    public SearchResult search(SolrQuery solrQuery) throws Exception {
         // 执行查询
         QueryResponse response = solrServer.query(solrQuery);
         // 获取查询结果列表

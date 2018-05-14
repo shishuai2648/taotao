@@ -11,5 +11,5 @@ import org.apache.solr.client.solrj.SolrServerException;
  **/
 public interface SearchService {
 
-    SearchResult search(String queryString,int page,int rows) throws SolrServerException;
+    SearchResult search(String queryString,int page,int rows) throws Exception;
 }

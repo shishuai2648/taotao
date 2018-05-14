@@ -6,5 +6,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 
 public interface SearchDao {
 
-    SearchResult search(SolrQuery solrQuery) throws SolrServerException;
+    SearchResult search(SolrQuery solrQuery) throws Exception;
+
+
 }

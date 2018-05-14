@@ -19,7 +19,11 @@
     <context:component-scan base-package="com.taotao.search.service,com.taotao.search.dao" />
 
     <!-- 单机版的Solr客户端 -->
-    <bean id="solrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
-        <constructor-arg name="baseURL" value="http://39.107.113.43:8080/solr"/>
+    <!--<bean id="solrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">-->
+        <!--<constructor-arg name="baseURL" value="http://39.107.113.43:8080/solr"/>-->
+    <!--</bean>-->
+    <!-- 集群版客户端 -->
+    <bean id="httpSolrClient" class="org.apache.solr.client.solrj.impl.HttpSolrClient">
+        <constructor-arg name="builder" value="http://192.168.31.145:9001/solr/newCollection" />
     </bean>
 </beans>

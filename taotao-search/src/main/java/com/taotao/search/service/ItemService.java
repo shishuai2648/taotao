@@ -7,4 +7,7 @@ public interface ItemService {
 
     TaotaoResult importItems() throws Exception;
 
+    TaotaoResult addOrUpdateItem(Long id) throws Exception;
+
+    TaotaoResult delete(Long id) throws Exception;
 }
