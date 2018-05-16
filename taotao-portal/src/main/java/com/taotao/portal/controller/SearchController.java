@@ -29,12 +29,6 @@ public class SearchController {
                          @RequestParam(defaultValue = "60") int rows,
                          Model model){
         // get乱码处理
-        try {
-            keywords = new String(keywords.getBytes("ISO-8859-1"),"UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            keywords = "";
-            e.printStackTrace();
-        }
         SearchResult searchResult = searchService.search(keywords, page, rows);
         // 参数传递给页面
         model.addAttribute("query",keywords);

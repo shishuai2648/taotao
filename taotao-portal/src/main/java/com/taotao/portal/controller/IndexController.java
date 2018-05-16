@@ -31,10 +31,4 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/posttest",method = RequestMethod.POST)
-    @ResponseBody
-    public String postTest(String name,String pass){
-        System.out.println(name+"---"+pass);
-        return "OK";
-    }
 }
