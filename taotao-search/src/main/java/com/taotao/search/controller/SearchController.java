@@ -33,6 +33,7 @@ public class SearchController {
                                @RequestParam(defaultValue = "30") Integer rows){
         try {
             // 转换字符集
+            keyword = new String(keyword.getBytes("ISO-8859-1"),"UTF-8");
             SearchResult result = searchService.search(keyword, page, rows);
             return TaotaoResult.ok(result);
         } catch (Exception e) {

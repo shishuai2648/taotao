@@ -14,10 +14,4 @@ import com.taotao.rest.pojo.ItemCatResult;
 public interface ItemCatService {
 
     ItemCatResult getItemCatList();
-
-    TbItem getItemById(Long id);
-
-    TbItemDesc getItemDescById(Long id);
-
-    TbItemParamItem getItemParamItemById(Long id);
 }

@@ -46,46 +46,7 @@ public class ItemCatController {
         return mappingJacksonValue;
     }
 
-    /**
-     * 查询商品基本信息
-     * @param itemId
-     * @return
-     */
-    @RequestMapping("/base/{itemId}")
-    @ResponseBody
-    public TaotaoResult getItemById(@PathVariable Long itemId){
-        try {
-            TbItem item = itemCatService.getItemById(itemId);
-            return TaotaoResult.ok(item);
-        }catch (Exception e){
-            e.printStackTrace();
-            return TaotaoResult.build(500,ExceptionUtil.getStackTrace(e));
-        }
-    }
 
-    @RequestMapping("/desc/{itemId}")
-    @ResponseBody
-    public TaotaoResult getItemDescById(@PathVariable Long itemId){
-        try {
-            TbItemDesc itemDesc = itemCatService.getItemDescById(itemId);
-            return TaotaoResult.ok(itemDesc);
-        }catch (Exception e){
-            e.printStackTrace();
-            return TaotaoResult.build(500,ExceptionUtil.getStackTrace(e));
-        }
-    }
-
-    @RequestMapping("/param/{itemId}")
-    @ResponseBody
-    public TaotaoResult getItemParam(@PathVariable Long itemId){
-        try {
-            TbItemParamItem itemParamItem = itemCatService.getItemParamItemById(itemId);
-            return TaotaoResult.ok(itemParamItem);
-        } catch (Exception e){
-            e.printStackTrace();
-            return TaotaoResult.build(500,ExceptionUtil.getStackTrace(e));
-        }
-    }
     /*
     第一张方式，直接返回字符串
     @RequestMapping(value="/list",produces = MediaType.APPLICATION_JSON_VALUE+";charset=utf-8")

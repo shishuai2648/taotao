@@ -10,6 +10,7 @@ import com.taotao.portal.service.SearchService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 /**
@@ -23,8 +24,9 @@ public class SearchServiceImpl implements SearchService {
     @Value("${SEARCH_BASE_URL}")
     private String SEARCH_BASE_URL;
 
+
     @Override
-    public SearchResult search(String keyword, int page, int rows) {
+    public SearchResult search(String keyword, int page, int rows)  {
         // 调用服务查询商品列表
         HashMap<String, String> param = new HashMap<>();
         param.put("keyword",keyword);
