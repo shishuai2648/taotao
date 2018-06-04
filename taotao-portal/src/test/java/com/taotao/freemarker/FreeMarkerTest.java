@@ -10,10 +10,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author shishuai
@@ -36,13 +33,14 @@ public class FreeMarkerTest {
         //第七步：创建模板需要的数据集。可以是一个map对象也可以是一个pojo。将模板需要的数据放入数据集。
         Map root = new HashMap();
         // root.put("hello","hello freemarker");
-        root.put("title","hello freemarker");
+//        root.put("title","hello freemarker");
         root.put("student",new Student(1,"张三","北京"));
         List<Student> students = new ArrayList<>();
         students.add(new Student(1,"张三1","上海1"));
         students.add(new Student(2,"张三2","上海2"));
         students.add(new Student(3,"张三3","上海3"));
         root.put("students",students);
+//        root.put("curdate",new Date());
         //第八步：创建一个Writer对象，指定生成文件所存放的路径及文件名。
         Writer out = new FileWriter(new File("E:\\ftl\\second.html"));
         //第九步：丢哦啊用模板对象的process方法生成静态文件。需要数据集与writer对象。
