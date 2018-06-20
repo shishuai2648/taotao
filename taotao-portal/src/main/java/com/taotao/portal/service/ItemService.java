@@ -6,7 +6,7 @@ public interface ItemService {
 
     PortalItem getItemById(Long itemId);
 
-    String getgItemDescById(Long itemId);
+    String getItemDescById(Long itemId);
 
     String getItemParamById(Long itemId);
 }

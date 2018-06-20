@@ -29,7 +29,7 @@ public class ItemController {
     @RequestMapping(value = "/item/desc/{itemId}" ,produces = MediaType.TEXT_HTML_VALUE+";charset=utf-8")
     @ResponseBody
     public String getItemDesc(@PathVariable Long itemId){
-        String desc = itemService.getgItemDescById(itemId);
+        String desc = itemService.getItemDescById(itemId);
         return desc;
     }
 

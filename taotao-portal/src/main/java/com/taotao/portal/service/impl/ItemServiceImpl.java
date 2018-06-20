@@ -40,7 +40,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public String getgItemDescById(Long itemId) {
+    public String getItemDescById(Long itemId) {
         // 根据商品id调用taotao-rest的服务获取到数据
         // http://localhost:8081/rest/item/desc/1022302785
         String json = HttpClientUtil.doGet(REST_BASE_URL + REST_ITEM_DESC_URL + itemId);

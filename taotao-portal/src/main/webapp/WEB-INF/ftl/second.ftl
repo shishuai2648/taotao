@@ -3,6 +3,7 @@
         <title>${title!"我是标题"}</title>
     </head>
     <body>
+        <#include "first.ftl">
         <label>学号</label>${student.id}<br/>
         <label>姓名</label>${student.name}<br/>
         <label>住址</label>${student.address}<br/>
