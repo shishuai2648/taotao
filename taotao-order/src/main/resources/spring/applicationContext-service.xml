@@ -50,4 +50,30 @@
         </constructor-arg>
     </bean>
     <bean id="jedisClientCluster" class="com.taotao.order.compoent.impl.JedisClientCluster"/>
+
+    <!-- 配置Job类 -->
+    <bean id="scheduler1" class="com.taotao.order.scheduler.Scheduler1" />
+
+    <!-- 配置JobDetail -->
+    <bean id="springQtzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 配置Job类 -->
+        <property name="targetObject" ref="scheduler1"></property>
+        <!-- 配置要执行的Job类中的方法 -->
+        <property name="targetMethod" value="execute"/>
+    </bean>
+
+    <!-- 配置触发器trigger -->
+    <bean id="cronTriggerFactoryBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="springQtzJobMethod" />
+        <property name="cronExpression" value="0/5 * * * * ?" />
+    </bean>
+
+    <!-- 配置调度工厂 -->
+    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="cronTriggerFactoryBean"></ref>
+            </list>
+        </property>
+    </bean>
 </beans>
