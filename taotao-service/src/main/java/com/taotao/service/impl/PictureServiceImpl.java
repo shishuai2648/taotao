@@ -5,7 +5,6 @@ import com.taotao.common.utils.FastDFSClient;
 import com.taotao.service.PictureService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
 /**

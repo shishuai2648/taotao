@@ -24,7 +24,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping(value = "/user/login"/*,method = RequestMethod.POST*/)
+    @RequestMapping(value = "/user/login",method = RequestMethod.POST)
     @ResponseBody
     public TaotaoResult login(String username, String password, HttpServletRequest request, HttpServletResponse response){
 

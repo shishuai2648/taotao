@@ -16,17 +16,7 @@
 	                       http://www.springframework.org/schema/util
 	                       http://www.springframework.org/schema/util/spring-util-4.0.xsd">
     <!-- 配置包扫描器 -->
-    <context:component-scan base-package="com.taotao.sso.service" />
-
-    <!-- 配置redis客户端单机版 -->
-    <!-- 创建一个jedisPool -->
-    <!--<bean id="jedisPool" class="redis.clients.jedis.JedisPool">-->
-        <!--<constructor-arg name="host" value="192.168.31.145"></constructor-arg>-->
-        <!--<constructor-arg name="port" value="6379"></constructor-arg>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; 配置redis客户端实现类 &ndash;&gt;-->
-    <!--<bean id="jedisClientSingle" class="com.taotao.sso.JedisClientSingle"/>-->
+    <context:component-scan base-package="com.taotao.order.service" />
 
     <!-- 配置redis集群版实现类 -->
     <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
@@ -59,5 +49,5 @@
             </set>
         </constructor-arg>
     </bean>
-    <bean id="jedisClientCluster" class="com.taotao.sso.compoent.impl.JedisClientCluster"/>
+    <bean id="jedisClientCluster" class="com.taotao.order.compoent.impl.JedisClientCluster"/>
 </beans>
